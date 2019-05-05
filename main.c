@@ -5,7 +5,7 @@
 
 int main() {
 	
-	int tamano=200;
+	int tamano=20000;
 	int numero=30648;
 	
 	ListaNumeros *UnaListaNumeros;
