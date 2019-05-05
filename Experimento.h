@@ -24,7 +24,7 @@ int Experimento(ListaNumeros *UnaListaNumeros, int tamano,int numero){
 		clock_gettime(CLOCK_REALTIME,&tInicio);
 		InsertarAlFinal(UnaListaNumeros,nuevo_tamano);
 		lista=BuscarEnOrden(UnaListaNumeros,numero);
-		lista=BuscarEnOrden(UnaListaNumeros,-1); //PERO CASO, EL NUMERO NO EST¡
+		lista=BuscarEnOrden(UnaListaNumeros,-1); //PERO CASO, EL NUMERO NO EST√Å
 		clock_gettime(CLOCK_REALTIME,&tFin);
 		if ((tFin.tv_nsec-tInicio.tv_nsec)<0){ 
             
@@ -124,4 +124,3 @@ int ExperimentoTres(ListaNumeros *UnaListaNumeros, int tamano,int numero){
 	}		
 		EliminarListaNumeros(UnaListaNumeros);
 }
-
