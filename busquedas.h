@@ -29,7 +29,7 @@ int BuscarEnOrden(ListaNumeros *UnaListaNumeros,int numero){
 	
 }
 
-// (2) Insertar en orden y usar búsqueda binaria:
+// (2) Insertar en orden y usar bÃºsqueda binaria:
 
 int InsertarEnOrden(ListaNumeros *UnaListaNumeros,int nuevo_tamano){
 	
@@ -39,7 +39,7 @@ int InsertarEnOrden(ListaNumeros *UnaListaNumeros,int nuevo_tamano){
 	  	UnaListaNumeros->arreglo[x]=rand()%(MAX+1);	
 	  	UnaListaNumeros->cantidad_actual++;
 	}
-	//Ordenar lista ascendentemente (Necesario para utilizar la búsqueda binaria)
+	//Ordenar lista ascendentemente (Necesario para utilizar la bÃºsqueda binaria)
 	for(i=0;i<=nuevo_tamano;i++){	
 		for(j=i+1;j<nuevo_tamano;j++){
 			if(UnaListaNumeros->arreglo[j]<UnaListaNumeros->arreglo[i]){
@@ -81,29 +81,32 @@ int BusquedaBinaria(ListaNumeros *UnaListaNumeros, int nuevo_tamano,int numero){
 	return 0;
 }
 
-// (3) Insertar siempre al final, ordenar con 'quicksort' después de cada inserción y usar búsqueda binaria:
+// (3) Insertar siempre al final, ordenar con 'quicksort' despuÃ©s de cada inserciÃ³n y usar bÃºsqueda binaria:
+
 
 
 int Comparar(const void * a, const void * b){
+	
 	int x,y;
+	
 	x= *(int *) a;
 	y= *(int *) b;
-	if (x < y)
-	return -1;
-		if (x == y)
-		return 0;
+	if (x < y) return -1;
+	if (x == y) return 0;
+	
 	return 1;	
 	
 }
 
 int InsertarAlFinalQuickSort(ListaNumeros *UnaListaNumeros,int nuevo_tamano){
 	
-	int i,a,b;
+	int i;
 	int MAX=50000;
 	for(i=nuevo_tamano;i>=0; i--){ 
 		UnaListaNumeros->arreglo[i]=rand()%(MAX+1);	
-		qsort(UnaListaNumeros->arreglo,nuevo_tamano, sizeof(int),&Comparar);
+		qsort(UnaListaNumeros->arreglo,nuevo_tamano, sizeof(int),Comparar);
 		UnaListaNumeros->cantidad_actual++;
+		
 	}
 	
 	UnaListaNumeros->cantidad_actual=UnaListaNumeros->cantidad_maxima;
@@ -111,10 +114,3 @@ int InsertarAlFinalQuickSort(ListaNumeros *UnaListaNumeros,int nuevo_tamano){
 	return 1;
 	
 }
-
-
-
-
-	
-
-
