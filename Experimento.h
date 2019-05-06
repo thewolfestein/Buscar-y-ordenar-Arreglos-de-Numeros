@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+
 #include "busquedas.h"
 
 struct timespec tInicio , tFin;
@@ -21,8 +19,8 @@ int Experimento(ListaNumeros *UnaListaNumeros, int tamano,int numero){
 	fprintf(archivo,"\n");fprintf(archivo,"\n");
 	
 	while(nuevo_tamano<tamano){
-		clock_gettime(CLOCK_REALTIME,&tInicio);
 		InsertarAlFinal(UnaListaNumeros,nuevo_tamano);
+		clock_gettime(CLOCK_REALTIME,&tInicio);
 		lista=BuscarEnOrden(UnaListaNumeros,numero);
 		lista=BuscarEnOrden(UnaListaNumeros,-1); //PERO CASO, EL NUMERO NO ESTÁ
 		clock_gettime(CLOCK_REALTIME,&tFin);
@@ -37,7 +35,7 @@ int Experimento(ListaNumeros *UnaListaNumeros, int tamano,int numero){
 			printf("\n Duracion en Nanosegundos -> %f \n\n",duracion_ns);
 		
 		}
-		nuevo_tamano=nuevo_tamano+50;
+		nuevo_tamano=nuevo_tamano+100000;
 		AumentaTamanoLista(UnaListaNumeros,nuevo_tamano);
 		fprintf(archivo,"%f \n",duracion_ns);
 		
@@ -62,10 +60,10 @@ int ExperimentoDos(ListaNumeros *UnaListaNumeros, int tamano,int numero){
 	fprintf(archivo,"\n");fprintf(archivo,"\n");
 	
 	while(nuevo_tamano<tamano){
-		clock_gettime(CLOCK_REALTIME,&tInicio);
 		InsertarEnOrden(UnaListaNumeros,nuevo_tamano);
-		lista=BusquedaBinaria(UnaListaNumeros,tamano,numero);
-		lista=BusquedaBinaria(UnaListaNumeros,tamano,-1);//PERO CASO EL NUMERO NO ESTA
+		clock_gettime(CLOCK_REALTIME,&tInicio);
+		lista=BusquedaBinaria(UnaListaNumeros,nuevo_tamano,50);
+		lista=BusquedaBinaria(UnaListaNumeros,nuevo_tamano,-1);//PERO CASO EL NUMERO NO ESTA
 		clock_gettime(CLOCK_REALTIME,&tFin);
 		if ((tFin.tv_nsec-tInicio.tv_nsec)<0){ 
             
@@ -78,9 +76,10 @@ int ExperimentoDos(ListaNumeros *UnaListaNumeros, int tamano,int numero){
 			printf("\n Duracion en Nanosegundos -> %f \n\n",duracion_ns);
 			
 		}
-		nuevo_tamano=nuevo_tamano+50;
+		nuevo_tamano=nuevo_tamano+100000;
 		AumentaTamanoLista(UnaListaNumeros,nuevo_tamano);
 		fprintf(archivo,"%f \n",duracion_ns);
+		duracion_ns=0;
 	}
 	fclose(archivo);
 	EliminarListaNumeros(UnaListaNumeros);
@@ -102,8 +101,8 @@ int ExperimentoTres(ListaNumeros *UnaListaNumeros, int tamano,int numero){
 		
 	while(nuevo_tamano<tamano){
 		
-		clock_gettime(CLOCK_REALTIME,&tInicio);
 		InsertarAlFinalQuickSort(UnaListaNumeros,nuevo_tamano);
+		clock_gettime(CLOCK_REALTIME,&tInicio);
 		lista=BusquedaBinaria(UnaListaNumeros,nuevo_tamano,numero);
 		lista=BusquedaBinaria(UnaListaNumeros,nuevo_tamano,-1);//PERO CASO EL NUMERO NO ESTA
 		clock_gettime(CLOCK_REALTIME,&tFin);
@@ -118,7 +117,7 @@ int ExperimentoTres(ListaNumeros *UnaListaNumeros, int tamano,int numero){
 			printf("\n Duracion en Nanosegundos -> %f \n\n",duracion_ns);
 			
 		}
-		nuevo_tamano=nuevo_tamano+50;
+		nuevo_tamano=nuevo_tamano+100000;
 		AumentaTamanoLista(UnaListaNumeros,nuevo_tamano);
 		fprintf(archivo,"%f \n",duracion_ns);
 	}		
