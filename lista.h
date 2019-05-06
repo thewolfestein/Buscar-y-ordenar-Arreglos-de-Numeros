@@ -13,7 +13,7 @@ ListaNumeros *CrearListaNumerosVacia(int tamano){
 	UnaListaNumeros = malloc(sizeof(ListaNumeros));  //(Primero se pide memoria a la Lista)
 	UnaListaNumeros->cantidad_actual=0;
 	UnaListaNumeros->cantidad_maxima=tamano;
-	UnaListaNumeros->arreglo = malloc(sizeof(int)*tamano);  //(Y se termina pidiendo memoria esta vez al arreglo con un determinado tamaÒo)
+	UnaListaNumeros->arreglo = malloc(sizeof(int)*tamano);  //(Y se termina pidiendo memoria esta vez al arreglo con un determinado tama√±o)
 
 	return(UnaListaNumeros); //revisar
 	
